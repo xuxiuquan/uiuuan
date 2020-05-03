@@ -1,0 +1,16 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: mongo-monitor
+  security:
+    user:
+      name: admin
+      password: 123456
+  cloud:
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        serviceName: ${spring.application.name}
+

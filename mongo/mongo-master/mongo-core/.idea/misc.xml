@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../mango-common/pom.xml" />
+        <option value="$PROJECT_DIR$/../mongo-admin/pom.xml" />
+        <option value="$PROJECT_DIR$/../mongo-pom/pom.xml" />
+        <option value="$PROJECT_DIR$/../mongo-common/pom.xml" />
+        <option value="$PROJECT_DIR$/../mongobackup/pom.xml" />
+        <option value="$PROJECT_DIR$/../mongo-backup/pom.xml" />
+        <option value="$PROJECT_DIR$/../mongo-monitor/pom.xml" />
+        <option value="$PROJECT_DIR$/../mongo-porducer/pom.xml" />
+        <option value="$PROJECT_DIR$/../mongo-porducer2/pom.xml" />
+        <option value="$PROJECT_DIR$/../mongo-comsumer/pom.xml" />
+        <option value="$PROJECT_DIR$/../mango-platform/后端源码/11. 服务消费（Ribbon、Feign）/mango-consumer/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

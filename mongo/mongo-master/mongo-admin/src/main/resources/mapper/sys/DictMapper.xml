@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxq.mongo.sys.mapper.DictMapper">
+    <sql id="Base_Column_List">
+        sys_dict.id,
+        sys_dict.label,
+        sys_dict.type,
+        sys_dict.description,
+        sys_dict.sort,
+        sys_dict.ramarks,
+        sys_dict.create_by,
+        sys_dict.create_time,
+        sys_dict.last_update_by,
+        sys_dict.last_update_time,
+        sys_dict.del_flag
+    </sql>
+
+    <select id="findPage" resultType="com.xxq.mongo.sys.entity.Dict">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_dict
+        where del_flag &lt;&gt; -1
+    </select>
+
+    <select id="findByLabel" parameterType="String" resultType="com.xxq.mongo.sys.entity.Dict">
+        <bind name="pattern" value="'%'+_parameter.label+'%'"/>
+        select
+        <include refid="Base_Column_List"/>
+        from sys_dict
+        where label like #{pattern} and del_flag &lt;&gt; -1
+    </select>
+
+    <select id="findPageByLabel" parameterType="java.lang.String" resultType="com.xxq.mongo.sys.entity.Dict">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_dict
+        where label = #{label} and del_flag &lt;&gt; -1
+    </select>
+</mapper>

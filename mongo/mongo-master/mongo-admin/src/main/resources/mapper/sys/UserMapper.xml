@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxq.mongo.sys.mapper.UserMapper">
+
+    <sql id="Base_Column_List" >
+        id,name, nick_name
+</sql>
+
+    <select id="getAll" resultType="com.xxq.mongo.sys.entity.User">
+        SELECT name FROM sys_user;
+    </select>
+
+    <select id="findPage" resultType="com.xxq.mongo.sys.entity.User">
+        select
+        <include refid="Base_Column_List"/>
+        from sys_user
+    </select>
+
+    <select id="findPermissions" resultType="com.xxq.mongo.sys.entity.Menu">
+        SELECT
+            m.*
+        FROM
+            sys_menu m,
+            sys_user u,
+            sys_user_role ur,
+            sys_role_menu rm
+        WHERE
+            u.NAME = #{username} and u.id = ur.user_id
+
+            AND ur.role_id = rm.role_id
+            AND rm.menu_id = m.id
+    </select>
+
+    <select id="findUserRoles" resultType="com.xxq.mongo.sys.entity.Role">
+        SELECT
+            *
+        FROM
+            sys_role
+        WHERE
+	        id IN ( SELECT role_id FROM sys_user_role WHERE user_id = #{userId} )
+    </select>
+</mapper>

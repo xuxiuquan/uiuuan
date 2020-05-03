@@ -1,0 +1,39 @@
+server:
+  port: 8003
+spring:
+  application:
+    name: mongo-producer
+  #热部署配置
+  devtools:
+    restart:
+      enabled: true  #设置开启热部署
+      additional-paths: src/main/java #重启目录
+      exclude: WEB-INF/**
+  freemarker:
+    cache: false    #页面不加载缓存，修改即时生效
+  #服务监控
+  boot:
+    admin:
+      client:
+        url: "http://127.0.0.1:8000"
+        username: admin #spring admin server用户名
+        password: 123456 #spring admin server密码
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name} #客户端元数据访问用户
+            user.password: ${spring.boot.admin.client.password} #客户端元数据访问密码
+  cloud:
+      #服务注册
+      consul:
+        host: localhost
+        port: 8500
+        discovery:
+          serviceName: ${spring.application.name}
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+      health:
+        show-details: ALWAYS

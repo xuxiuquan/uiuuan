@@ -1,0 +1,10 @@
+com\xxq\mongo\backup\service\MysqlBackupService.class
+com\xxq\mongo\backup\Constants\BackupConstants.class
+com\xxq\mongo\backup\controller\MysqlBackupController.class
+com\xxq\mongo\backup\util\HttpResult.class
+com\xxq\mongo\backup\config\CorsConfig.class
+com\xxq\mongo\backup\datasource\BackupDataSourceProperties.class
+com\xxq\mongo\backup\util\MysqlbackupRestoreUtils.class
+com\xxq\mongo\backup\service\impl\MysqlBackupServiceImpl.class
+com\xxq\mongo\backup\MongoBackupApplication.class
+com\xxq\mongo\backup\config\SwaggerConfig.class

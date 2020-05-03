@@ -1,0 +1,113 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: mongo-admin
+  security:
+    user:
+      name: client #客户端用户名
+      password: 123456 # 客户端密码
+      roles: ACTUATOR_ADMIN #拥有角色，用于允许自身访问
+  #服务监控
+  boot:
+    admin:
+      client:
+        url: "http://127.0.0.1:8000"
+        username: admin #spring admin server用户名
+        password: 123456 #spring admin server密码
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name} #客户端元数据访问用户
+            user.password: ${spring.boot.admin.client.password} #客户端元数据访问密码
+  cloud:
+      #服务注册
+      consul:
+        host: localhost
+        port: 8500
+        discovery:
+          serviceName: ${spring.application.name}
+  datasource:
+    name: druidDataSource
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3366/mongo?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: 123
+    druid:
+      # 连接池的配置信息
+        # 初始化大小，最小，最大
+        initial-size: 5
+        min-idle: 5
+        maxActive: 20
+        # 配置获取连接等待超时的时间
+        maxWait: 60000
+        # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+        timeBetweenEvictionRunsMillis: 60000
+        # 配置一个连接在池中最小生存的时间，单位是毫秒
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: SELECT 1
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        # 打开PSCache，并且指定每个连接上PSCache的大小
+        poolPreparedStatements: true
+        maxPoolPreparedStatementPerConnectionSize: 20
+        # 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
+        filters: stat,wall,slf4j
+        # 通过connectProperties属性来打开mergeSql功能；慢SQL记录
+        connectionProperties: druid.stat.mergeSql\=true;druid.stat.slowSqlMillis\=5000
+        # 配置DruidStatFilter
+        web-stat-filter:
+          enabled: true
+          url-pattern: "/*"
+          exclusions: "*.js,*.gif,*.jpg,*.bmp,*.png,*.css,*.ico,/druid/*"
+        # 配置DruidStatViewServlet
+        stat-view-servlet:
+          url-pattern: "/druid/*"
+          # IP白名单(没有配置或者为空，则允许所有访问)
+          allow: 127.0.0.1,192.168.163.1
+          # IP黑名单 (存在共同时，deny优先于allow)
+          deny: 192.168.1.73
+          #  禁用HTML页面上的“Reset All”功能
+          reset-enable: false
+          # 登录名
+          login-username: admin
+          # 登录密码
+          login-password: test
+# mybatis-plus相关配置
+mybatis-plus:
+  # xml扫描，多个目录用逗号或者分号分隔（告诉 Mapper 所对应的 XML 文件位置）
+  mapper-lacations: classpath:mapper/*.xml
+  # 以下配置均有默认值,可以不设置
+  global-config:
+    db-config:
+      #主键类型 AUTO:"数据库ID自增" INPUT:"用户输入ID",ID_WORKER:"全局唯一ID (数字类型唯一ID)", UUID:"全局唯一ID UUID";
+      id-type: auto
+      #字段策略 IGNORED:"忽略判断"  NOT_NULL:"非 NULL 判断")  NOT_EMPTY:"非空判断"
+      field-strategy: NOT_EMPTY
+      #数据库类型
+      db-type: MYSQL
+      logic-delete-field: flag  #全局逻辑删除字段值 3.3.0开始支持，详情看下面。
+      logic-delete-value: -1 # 逻辑已删除值(默认为 1)
+      logic-not-delete-value: 0 # 逻辑未删除值(默认为 0)
+  configuration:
+    # 是否开启自动驼峰命名规则映射:从数据库列名到Java属性驼峰命名的类似映射
+    map-underscore-to-camel-case: true
+    # 如果查询结果中包含空值的列，则 MyBatis 在映射的时候，不会映射这个字段
+    call-setters-on-nulls: true
+    # 这个配置会将执行的sql打印出来，在开发或测试的时候可以用
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#pageHelper
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+      health:
+        show-details: ALWAYS

@@ -1,0 +1,6 @@
+com\xxq\mongo\core\service\CurdService.class
+com\xxq\mongo\core\http\HttpResult.class
+com\xxq\mongo\core\page\PageRequest.class
+com\xxq\mongo\core\page\PageResult.class
+com\xxq\mongo\core\http\HttpStatus.class
+com\xxq\mongo\core\page\MybatisPageHelper.class

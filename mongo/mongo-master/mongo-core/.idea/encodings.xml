@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/../mango-platform/后端源码/10. 注册中心（Consul）/mango-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../mango-platform/后端源码/10. 注册中心（Consul）/mango-monitor" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../mango-platform/后端源码/11. 服务消费（Ribbon、Feign）/mango-consumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../mango-platform/后端源码/9. 系统服务监控/mango-admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../mango-platform/后端源码/9. 系统服务监控/mango-backup" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../mango-platform/后端源码/9. 系统服务监控/mango-common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../mango-platform/后端源码/9. 系统服务监控/mango-core" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../mango-platform/后端源码/9. 系统服务监控/mango-monitor" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../mongo-admin" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../mongo-backup" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../mongo-comsumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../mongo-monitor" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../mongo-porducer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/../mongo-porducer2" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/spring-boot-examples/spring-boot-examples-admin-client" charset="UTF-8" />
+    <file url="file://$USER_HOME$/Downloads/spring-boot-examples/spring-boot-examples-admin-server" charset="UTF-8" />
+  </component>
+</project>
