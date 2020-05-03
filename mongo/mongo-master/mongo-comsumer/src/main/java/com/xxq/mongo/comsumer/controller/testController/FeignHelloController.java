@@ -20,7 +20,6 @@ public class FeignHelloController {
 
     @RequestMapping("/feign/call")
     public String hello(){
-        System.out.println("声明式服务调用");
         return mongoProducerService.hello();
     }
 }

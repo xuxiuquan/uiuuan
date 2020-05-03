@@ -1,5 +1,6 @@
 package com.xxq.mongo.comsumer.service.MongoProducerService;
 
+import com.xxq.mongo.comsumer.hystrix.MongoProducerHystrix;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @ Modified By：
  * @Version : 1.0
  */
-@FeignClient(name = "mongo-producer")
+@FeignClient(name = "mongo-producer",fallback = MongoProducerHystrix.class)
 public interface MongoProducerService {
 
     /**
@@ -19,5 +20,5 @@ public interface MongoProducerService {
      * @return
      */
     @RequestMapping("/hello")
-    public String hello();
+    String hello();
 }

@@ -1,16 +1,8 @@
 server:
-  port: 8005
+  port: 8501
 spring:
   application:
-    name: mongo-consumer
-  #热部署配置
-  devtools:
-    restart:
-      enabled: true  #设置开启热部署
-      additional-paths: src/main/java #重启目录
-      exclude: WEB-INF/**
-  freemarker:
-    cache: false    #页面不加载缓存，修改即时生效
+    name: mongo-hystrix
   #服务监控
   boot:
     admin:
@@ -38,12 +30,13 @@ management:
   endpoint:
       health:
         show-details: ALWAYS
-#mongo-producer为注册中心的注册的服务名
-mongo-producer:
-  ribbon:
-    #轮询策略为随机，更多策略（https://blog.csdn.net/rickiyeat/article/details/64918756）
-    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
-#开启熔断器
-feign:
-  hystrix:
-    enabled: true
+#监控信息汇总工具turbine
+turbine:
+  #信息收集路径
+  instanceUrlSuffix: /hystrix.stream
+  #需要收集监控信息的服务名，多个以“,”隔开
+  appConfig: mongo-consumer
+  #指定集群名称，若为“default”则为默认集群，多个集群通过此配置区分
+  clusterNameExpression: "'default'"
+  #默认为false，服务以host进行区分，若设置为true则以host+port进行区分
+  combine-host-port: true
