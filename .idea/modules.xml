@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-admin/mongo-admin.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-admin/mongo-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-backup/mongo-backup.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-backup/mongo-backup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-common/mongo-common.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-common/mongo-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-comsumer/mongo-comsumer.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-comsumer/mongo-comsumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-core/mongo-core.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-core/mongo-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-hystrix/mongo-hystrix.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-hystrix/mongo-hystrix.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-monitor/mongo-monitor.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-monitor/mongo-monitor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-pom/mongo-pom.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-pom/mongo-pom.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-porducer/mongo-porducer.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-porducer/mongo-porducer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-porducer2/mongo-porducer2.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-porducer2/mongo-porducer2.iml" />
+    </modules>
+  </component>
+</project>

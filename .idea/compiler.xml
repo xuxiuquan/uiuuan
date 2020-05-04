@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mongo-admin" />
+        <module name="mongo-backup" />
+        <module name="mongo-common" />
+        <module name="mongo-comsumer" />
+        <module name="mongo-core" />
+        <module name="mongo-hystrix" />
+        <module name="mongo-monitor" />
+        <module name="mongo-porducer" />
+        <module name="mongo-porducer2" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mongo-admin" target="1.8" />
+      <module name="mongo-backup" target="1.8" />
+      <module name="mongo-common" target="1.5" />
+      <module name="mongo-comsumer" target="1.8" />
+      <module name="mongo-core" target="1.5" />
+      <module name="mongo-hystrix" target="1.8" />
+      <module name="mongo-monitor" target="1.8" />
+      <module name="mongo-pom" target="1.5" />
+      <module name="mongo-porducer" target="1.8" />
+      <module name="mongo-porducer2" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
