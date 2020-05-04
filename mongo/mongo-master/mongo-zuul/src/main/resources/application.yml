@@ -1,0 +1,49 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: mongo-zuul
+  #服务监控
+  boot:
+    admin:
+      client:
+        url: "http://127.0.0.1:8000"
+        username: admin #spring admin server用户名
+        password: 123456 #spring admin server密码
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name} #客户端元数据访问用户
+            user.password: ${spring.boot.admin.client.password} #客户端元数据访问密码
+  cloud:
+      #服务注册
+      consul:
+        host: localhost
+        port: 8500
+        discovery:
+          serviceName: ${spring.application.name}
+# 开放健康检查接口
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+      health:
+        show-details: ALWAYS
+#服务网关
+zuul:
+  prefix: /uiuuan
+  routes:
+    #请求以/ribbon开头的转发到mongo-consumer服务
+    #zuul会代理所有注册到注册中心的服务，如不进行路由配置，可通过serviceId/**访问到服务（http://localhost:8010/mongo-consumer/ribbon/**）
+    ribbon:
+      #转发的路由
+      path: /ribbon/**
+      #服务ID
+      serviceId: mongo-consumer
+    #请求以/feign开头的转发到mongo-consumer服务
+    feign:
+      #转发的路由
+      path: /feign/**
+      #服务ID
+      serviceId: mongo-consumer

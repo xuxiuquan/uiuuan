@@ -19,6 +19,7 @@
         <module>../mongo-porducer</module>
         <module>../mongo-porducer2</module>
         <module>../mongo-hystrix</module>
+        <module>../mongo-zuul</module>
     </modules>
 
     <build>
