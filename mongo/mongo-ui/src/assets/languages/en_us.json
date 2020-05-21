@@ -1,0 +1,26 @@
+{
+    "common": {
+        "home": "Home",
+        "login": "Login",
+        "logout": "logout",
+        "doc": "Doc",
+        "blog": "Blog",
+        "personalCenter":"personalCenter",
+        "ChangePassword":"ChanPassword",
+        "backupRestore": "BackupRestore",
+        "restore": "Restore",
+        "backup": "Backup"
+    },
+
+    "action": {
+        "cancel": "Cancel" ,
+        "submit": "Submit",
+        "search": "Search",
+        "add": "Add",
+        "edit": "Edit",
+        "delete": "Delete",
+        "operation": "Operation",
+        "batchDelete": "BatchDelete"
+    }
+
+}

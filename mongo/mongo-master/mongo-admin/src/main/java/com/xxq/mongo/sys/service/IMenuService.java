@@ -3,6 +3,8 @@ package com.xxq.mongo.sys.service;
 import com.xxq.mongo.sys.entity.Menu;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
  * <p>
  * 菜单管理 服务类
@@ -13,4 +15,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IMenuService extends IService<Menu> {
 
+    List<Menu> findNavTree(String username, int i);
+
+    List<Menu> findByUser(String userName);
 }

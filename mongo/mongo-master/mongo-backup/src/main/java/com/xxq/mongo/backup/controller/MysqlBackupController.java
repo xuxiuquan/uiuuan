@@ -27,6 +27,7 @@ import static com.xxq.mongo.backup.Constants.BackupConstants.DEFAULT_BACKUP_NAME
  * @Version : 1.0
  */
 @RestController
+@RequestMapping("/backup")
 public class MysqlBackupController {
 
     @Autowired
@@ -75,7 +76,7 @@ public class MysqlBackupController {
         String host = properties.getHost();
         String userName = properties.getUserName();
         String password = properties.getPassword();
-        String database = properties.getDatabase();
+        String database = "mongo1";
         String backupFolder = properties.getBackupFolder();
         String restoreFilePath = backupFolder + File.separator + name;
         try {

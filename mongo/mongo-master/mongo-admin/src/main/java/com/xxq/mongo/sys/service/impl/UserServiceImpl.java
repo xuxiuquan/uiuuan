@@ -9,6 +9,7 @@ import com.xxq.mongo.core.page.PageResult;
 import com.xxq.mongo.sys.entity.Menu;
 import com.xxq.mongo.sys.entity.Role;
 import com.xxq.mongo.sys.entity.User;
+import com.xxq.mongo.sys.mapper.MenuMapper;
 import com.xxq.mongo.sys.mapper.UserMapper;
 import com.xxq.mongo.sys.service.IUserService;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -19,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -35,14 +37,24 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Autowired
     UserMapper userMapper;
 
+    @Autowired
+    MenuMapper menuMapper;
+
     @Override
     public PageResult findPage(PageRequest pageRequest) {
         return MybatisPageHelper.findPage(pageRequest,userMapper);
     }
 
     @Override
-    public Set<Menu> findPermissions(String name) {
-        return userMapper.findPermissions(name);
+    public Set<String> findPermissions(String name) {
+        Set<String> perms = new HashSet<>();
+        List<Menu> sysMenus = menuMapper.findByUserName(name);
+        for(Menu sysMenu:sysMenus) {
+            if(sysMenu.getPerms() != null && !"".equals(sysMenu.getPerms())) {
+                perms.add(sysMenu.getPerms());
+            }
+        }
+        return perms;
     }
 
     @Override

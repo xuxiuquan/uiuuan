@@ -27,7 +27,7 @@ public interface IUserService extends IService<User> {
      */
     PageResult findPage(PageRequest pageRequest);
 
-    Set<Menu> findPermissions(String name);
+    Set<String> findPermissions(String name);
 
     List<Role> findUserRoles(Long userId);
 

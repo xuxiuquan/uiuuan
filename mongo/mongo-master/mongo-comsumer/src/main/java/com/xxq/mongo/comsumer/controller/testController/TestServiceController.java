@@ -27,7 +27,7 @@ public class TestServiceController {
         return discoveryClient.getInstances("mongo-producer");
     }
 
-    @RequestMapping("/discover")
+    @GetMapping("/discover")
     public Object discover(){
         return loadBalancerClient.choose("mongo-producer").getUri().toString();
     }

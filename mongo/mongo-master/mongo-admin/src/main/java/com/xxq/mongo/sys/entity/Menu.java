@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,6 +27,7 @@ public class Menu implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    private Long id;
     /**
      * 菜单名称
      */
@@ -86,6 +88,13 @@ public class Menu implements Serializable {
      * 是否删除 -1： 已删除 0： 正常
      */
     private Integer delFlag;
+
+    // 非数据库字段
+    private String parentName;
+    // 非数据库字段
+    private Integer level;
+    // 非数据库字段
+    private List<Menu> children;
 
 
 }

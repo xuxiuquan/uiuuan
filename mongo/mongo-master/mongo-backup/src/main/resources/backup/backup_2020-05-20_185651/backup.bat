@@ -1,0 +1,1 @@
+mysqldump --opt  --add-drop-database  --add-drop-table  -hlocalhost -uroot -proot mongo > C:\DemoProject\com.uiuuan\mongo\mongo-master\mongo-backup\src\main\resources\backup\backup_2020-05-20_185651\mango.sql --default-character-set=utf8 

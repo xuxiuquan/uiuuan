@@ -2,8 +2,7 @@ package com.xxq.mongo.backup.util;
 
 import lombok.extern.slf4j.Slf4j;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * @ Author     ：XuXiuquan.
@@ -27,6 +26,7 @@ public class MysqlbackupRestoreUtils {
      * @throws Exception
      */
     public static boolean backup(String host, String userName, String password, String backupFolderPath, String fileName, String database) throws InterruptedException, IOException {
+        char i = 13;
         File backupFolderFile = new File(backupFolderPath);
         if(!backupFolderFile.exists()){
             //如果目录不存在则创建目录
@@ -41,8 +41,21 @@ public class MysqlbackupRestoreUtils {
         stringBuilder.append(" -h").append(host).append(" -u").append(userName).append(" -p").append(password).append(" ").append(database);
         stringBuilder.append(" > ").append(backupFilePath).append(" --default-character-set=utf8 ");
 
+        String filePath = backupFolderPath+"\\"+"backup.bat";
+        try{
+            //如果module文件夹下没有bar.txt就会创建该文件
+            BufferedWriter bw = new BufferedWriter(new FileWriter(filePath));
+            bw.write(stringBuilder.toString());	//在创建好的文件中写入"Hello bar"
+            bw.close();				//关闭文件
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
+
+
+        //Process process = Runtime.getRuntime().exec(getCommand(stringBuilder.toString()));
         //调用外部执行exe文件的java api
-        Process process = Runtime.getRuntime().exec(getCommand(stringBuilder.toString()));
+        Process process = Runtime.getRuntime().exec(filePath);
+
         if(process.waitFor()==0){
             //0表示线程正常中止
             log.info("数据已经备份到"+backupFilePath+"文件中");
@@ -91,32 +104,32 @@ public class MysqlbackupRestoreUtils {
     private static String[] getCommand(String command) {
         String os = System.getProperty("os.name");
         String shell = "/bin/bash";
-        String c = "-c";
+        String c = "-k";
         //如果是window系统
         if(os.toLowerCase().startsWith("win")){
-            shell = "cmd.exe";
+            shell = "cmd";
             c = "/c";
         }
-        String[] cmd = { shell, c, command };
+        String[] cmd = { shell, c, command};
         return cmd;
     }
 
     public static void main(String[] args) throws Exception {
         String host = "localhost";
         String userName = "root";
-        String password = "123";
+        String password = "root";
         String database = "mongo";
         String database_backup = "mongo_backup";
 
         System.out.println("开始备份");
-        String backupFolderPath = "C:\\DemoProject\\mongo-backup\\src\\main\\resources";
-        String fileName = "mango.sql";
-      //  backup(host, userName, password, backupFolderPath, fileName, database);
+        String backupFolderPath = "C:\\DemoProject\\com.uiuuan\\mongo\\mongo-master\\mongo-backup\\src\\main\\resources\\backup";
+        String fileName = "mango1.sql";
+         backup(host, userName, password, backupFolderPath, fileName, database);
         System.out.println("备份成功");
 
         System.out.println("开始还原");
         String restoreFilePath = "C:\\DemoProject\\mongo-backup\\src\\main\\resources";
-        restore(restoreFilePath, host, userName, password, database_backup);
+       // restore(restoreFilePath, host, userName, password, database_backup);
         System.out.println("还原成功");
 
     }

@@ -1,0 +1,27 @@
+spring:
+  application: consumer
+  cloud:
+    #服务注册
+    consul:
+      host: localhost
+      port: 8500
+      discovery:
+        serviceName: ${spring.application.name}
+    #配置仓库
+    config:
+      discovery:
+        #开启服务发现
+        enabled: true
+        #配置中心服务id
+        serviceId: mongo-config
+      #对应{application}部分
+      name: consumer
+      #对应{profile}部分
+      profile: dev
+      label: master
+   #RabbitMQ配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest

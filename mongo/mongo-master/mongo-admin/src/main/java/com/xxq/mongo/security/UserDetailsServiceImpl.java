@@ -35,7 +35,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
             throw new UsernameNotFoundException("用户名不存在");
         }
         // 用户权限列表，根据用户拥有的权限标识与如 @PreAuthorize("hasAuthority('sys:menu:view')") 标注的接口对比，决定是否可以调用接口
-        List<String> permissions = iUserService.findPermissions(user.getName()).stream().map(Menu::getPerms).collect(Collectors.toList());
+        Set<String> permissions = iUserService.findPermissions(user.getName());
         List<GrantedAuthority> grantedAuthorities = permissions.stream().map(GrantedAuthorityImpl::new).collect(Collectors.toList());
         return new JwtUserDetails(user.getName(),user.getPassword(),user.getSalt(),grantedAuthorities);
     }

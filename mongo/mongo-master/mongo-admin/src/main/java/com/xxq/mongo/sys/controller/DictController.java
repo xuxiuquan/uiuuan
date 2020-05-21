@@ -20,7 +20,7 @@ import java.util.List;
  * @since 2020-04-12
  */
 @RestController
-@RequestMapping("/sys/dict")
+@RequestMapping("/dict")
 public class DictController {
     @Autowired
     private IDictService dictService;

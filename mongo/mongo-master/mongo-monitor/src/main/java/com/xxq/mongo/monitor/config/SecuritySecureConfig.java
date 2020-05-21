@@ -48,5 +48,6 @@ public class SecuritySecureConfig extends WebSecurityConfigurerAdapter {
                         "/instances",
                         "/actuator/**"
                 );
+        http.headers().frameOptions().disable();
     }
 }

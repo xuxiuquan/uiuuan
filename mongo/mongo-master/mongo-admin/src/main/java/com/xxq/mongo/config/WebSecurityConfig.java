@@ -65,6 +65,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         //http.logout().logoutSuccessHandler();
         //token验证过滤器
         http.addFilterBefore(new JwtAuthenticationFilter(authenticationManager()),UsernamePasswordAuthenticationFilter.class);
+        http.headers().frameOptions().disable();
     }
 
     @Bean
@@ -77,5 +78,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         //配置后拦截器不对此请求进行拦截
         web.ignoring().antMatchers("/actuator/**");
+        //web.ignoring().antMatchers("/login/**");
     }
 }

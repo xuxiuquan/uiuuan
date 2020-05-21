@@ -7,7 +7,7 @@
         sys_dict.type,
         sys_dict.description,
         sys_dict.sort,
-        sys_dict.ramarks,
+        sys_dict.remarks,
         sys_dict.create_by,
         sys_dict.create_time,
         sys_dict.last_update_by,

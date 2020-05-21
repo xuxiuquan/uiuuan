@@ -1,0 +1,49 @@
+server:
+  port: 8020
+spring:
+  application:
+    name: mongo-config
+  #服务监控
+  boot:
+    admin:
+      client:
+        url: "http://localhost:8000"
+        username: admin #spring admin server用户名
+        password: 123456 #spring admin server密码
+        instance:
+          service-base-url: http://localhost:8020
+          metadata:
+            user.name: ${spring.security.user.name} #客户端元数据访问用户
+            user.password: ${spring.boot.admin.client.password} #客户端元数据访问密码
+  cloud:
+      #服务注册
+      consul:
+        host: localhost
+        port: 8500
+        discovery:
+          serviceName: ${spring.application.name}
+      #配置仓库
+      config:
+        #git仓库分支
+        lable: master
+        server:
+          git:
+            #git仓库地址
+            uri: https://github.com/xuxiuquan/com.uiuuan.git
+            search-paths: mongo/mongo-master/config-repo
+            username: xuxiuquan
+            password: xxq123456789+
+  #RabbitMQ配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+      health:
+        show-details: ALWAYS

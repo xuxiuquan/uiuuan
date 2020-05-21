@@ -34,8 +34,8 @@ mongo:
     datasource:
       host: localhost
       username: root
-      password: 123
+      password: root
       #需要备份的数据库
       database: mongo
       #数据库文件备份地址
-      backupFolder: C:\DemoProject\mongo-backup\src\main\resources\backup
+      backupFolder: C:\DemoProject\com.uiuuan\mongo\mongo-master\mongo-backup\src\main\resources\backup

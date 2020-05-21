@@ -20,6 +20,7 @@
         <module>../mongo-porducer2</module>
         <module>../mongo-hystrix</module>
         <module>../mongo-zuul</module>
+        <module>../mongo-config</module>
     </modules>
 
     <build>

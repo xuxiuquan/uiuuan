@@ -1,12 +1,14 @@
 package com.xxq.mongo.sys.entity;
 
-import com.baomidou.mybatisplus.annotation.TableName;
-import java.time.LocalDateTime;
 import com.baomidou.mybatisplus.annotation.TableField;
-import java.io.Serializable;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -23,6 +25,8 @@ import lombok.experimental.Accessors;
 public class Dept implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    private Long id;
 
     /**
      * 机构名称
@@ -48,7 +52,7 @@ public class Dept implements Serializable {
     /**
      * 创建时间
      */
-    private LocalDateTime createTime;
+    private Date createTime;
 
     /**
      * 更新人
@@ -58,12 +62,23 @@ public class Dept implements Serializable {
     /**
      * 更新时间
      */
-    private LocalDateTime lastUpdateTime;
+    private Date lastUpdateTime;
 
     /**
      * 是否删除 -1： 已删除 0： 正常
      */
     private Integer delFlag;
 
+    // 非数据库字段
+    private List<Dept> children;
+    // 非数据库字段
+    private String parentName;
+    // 非数据库字段
+    private Integer level;
 
+    public void removeField(Dept record) {
+        record.setChildren(null);
+        record.setParentName(null);
+        record.setLevel(null);
+    }
 }
