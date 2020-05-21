@@ -4,9 +4,11 @@
     <file url="file://$PROJECT_DIR$/mongo/mongo-master/mongo-admin" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mongo/mongo-master/mongo-backup" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mongo/mongo-master/mongo-comsumer" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mongo/mongo-master/mongo-config" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mongo/mongo-master/mongo-hystrix" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mongo/mongo-master/mongo-monitor" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mongo/mongo-master/mongo-porducer" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mongo/mongo-master/mongo-porducer2" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mongo/mongo-master/mongo-zuul" charset="UTF-8" />
   </component>
 </project>

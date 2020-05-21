@@ -6,12 +6,14 @@
       <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-backup/mongo-backup.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-backup/mongo-backup.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-common/mongo-common.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-common/mongo-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-comsumer/mongo-comsumer.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-comsumer/mongo-comsumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-config/mongo-config.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-config/mongo-config.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-core/mongo-core.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-core/mongo-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-hystrix/mongo-hystrix.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-hystrix/mongo-hystrix.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-monitor/mongo-monitor.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-monitor/mongo-monitor.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-pom/mongo-pom.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-pom/mongo-pom.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-porducer/mongo-porducer.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-porducer/mongo-porducer.iml" />
       <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-porducer2/mongo-porducer2.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-porducer2/mongo-porducer2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mongo/mongo-master/mongo-zuul/mongo-zuul.iml" filepath="$PROJECT_DIR$/mongo/mongo-master/mongo-zuul/mongo-zuul.iml" />
     </modules>
   </component>
 </project>
