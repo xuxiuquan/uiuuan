@@ -68,8 +68,8 @@
 			<el-form-item label="手机" prop="mobile">
 				<el-input v-model="dataForm.mobile" auto-complete="off"></el-input>
 			</el-form-item>
-			<el-form-item label="角色" prop="userRoles" v-if="!operation">
-				<el-select v-model="dataForm.userRoles" multiple placeholder="请选择"
+			<el-form-item label="角色" prop="userRoles" v-if="!operation" >
+				<el-select v-model="dataForm.userRoles" multiple placeholder="请选择" value-key="id"
 					 style="width: 100%;">
 					<el-option v-for="item in roles" :key="item.id"
 						:label="item.remark" :value="item.id">
@@ -142,8 +142,11 @@ export default {
 		findPage: function (data) {
 			if(data !== null) {
 				this.pageRequest = data.pageRequest
+			}else{
+				this.pageRequest.pageSize = 10
+				this.pageRequest.pageNum = 1
 			}
-			this.pageRequest.columnFilters = {name: {name:'name', value:this.filters.name}}
+			this.pageRequest.params = {name: this.filters.name}
 			this.$api.user.findPage(this.pageRequest).then((res) => {
 				this.pageResult = res.data
 				this.findUserRoles()
@@ -182,8 +185,8 @@ export default {
 			this.operation = false
 			this.dataForm = Object.assign({}, params.row)
 			let userRoles = []
-			for(let i=0,len=params.row.userRoles.length; i<len; i++) {
-				userRoles.push(params.row.userRoles[i].roleId)
+			for(let i=0,len=params.row.roles.length; i<len; i++) {
+				userRoles.push(params.row.roles[i].id)
 			}
 			this.dataForm.userRoles = userRoles
 		},
