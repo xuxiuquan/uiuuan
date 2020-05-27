@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.xxq.mongo.common.ReflectionUtils;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @ Author     ：XuXiuquan.
@@ -39,8 +40,9 @@ public class MybatisPageHelper {
         //设置分页参数
         int pageNum = pageRequest.getPageNum();
         int pageSize = pageRequest.getPageSize();
+        Map<String,Object> params = pageRequest.getParams();
         PageHelper.startPage(pageNum,pageSize);
-        Object result = ReflectionUtils.invoke(mapper,queryMethodName,args);
+        Object result = ReflectionUtils.invoke(mapper,queryMethodName,params);
         return getPageResult(pageRequest,new PageInfo((List)result));
     }
 

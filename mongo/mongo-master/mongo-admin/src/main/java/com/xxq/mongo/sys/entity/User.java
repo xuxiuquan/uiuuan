@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -101,6 +103,5 @@ public class User implements Serializable {
      * 是否删除 -1： 已删除 0： 正常
      */
     private Integer delFlag;
-
 
 }

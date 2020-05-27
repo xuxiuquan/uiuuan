@@ -8,6 +8,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -23,7 +24,7 @@ public interface UserMapper extends BaseMapper<User> {
 
     List<User> getAll();
 
-    List<User> findPage();
+    List<User> findPage(@Param("params") Map params);
 
     Set<Menu> findPermissions(@Param("username") String username);
 

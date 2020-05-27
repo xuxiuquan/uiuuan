@@ -9,12 +9,15 @@ import com.xxq.mongo.core.page.PageResult;
 import com.xxq.mongo.sys.entity.Menu;
 import com.xxq.mongo.sys.entity.Role;
 import com.xxq.mongo.sys.entity.User;
+import com.xxq.mongo.sys.entity.UserRole;
 import com.xxq.mongo.sys.mapper.MenuMapper;
 import com.xxq.mongo.sys.mapper.UserMapper;
 import com.xxq.mongo.sys.service.IUserService;
+import com.xxq.mongo.sys.vo.UserVO;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +26,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static java.util.stream.Collectors.joining;
 
 /**
  * <p>
@@ -42,7 +47,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public PageResult findPage(PageRequest pageRequest) {
-        return MybatisPageHelper.findPage(pageRequest,userMapper);
+        PageResult pageResult = MybatisPageHelper.findPage(pageRequest,userMapper);
+        // 加载用户角色信息
+        findUserRoles(pageResult);
+        return pageResult;
     }
 
     @Override
@@ -60,6 +68,25 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     @Override
     public List<Role> findUserRoles(Long userId) {
         return userMapper.findUserRoles(userId);
+    }
+
+    /**
+     * 加载用户角色
+     * @param pageResult
+     */
+    private void findUserRoles(PageResult pageResult) {
+        List<?> content = pageResult.getContent();
+        List<UserVO> resultContent = new ArrayList<>();
+        for(Object object:content) {
+            User sysUser = (User) object;
+            UserVO userVO = new UserVO();
+            BeanUtils.copyProperties(sysUser,userVO);
+            List<Role> userRoles = findUserRoles(sysUser.getId());
+            userVO.setRoles(userRoles);
+            userVO.setRoleNames(userRoles.stream().map(Role::getName).collect(joining(",")));
+            resultContent.add(userVO);
+        }
+        pageResult.setContent(resultContent);
     }
 
     @Override
