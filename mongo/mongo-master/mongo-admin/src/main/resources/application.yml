@@ -30,7 +30,7 @@ spring:
   cloud:
       #服务注册
       consul:
-        host: localhost
+        host: 39.96.68.138
         port: 8500
         discovery:
           serviceName: ${spring.application.name}
