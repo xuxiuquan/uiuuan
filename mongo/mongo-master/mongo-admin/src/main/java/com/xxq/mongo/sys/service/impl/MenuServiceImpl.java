@@ -25,7 +25,7 @@ public class MenuServiceImpl extends ServiceImpl<MenuMapper, Menu> implements IM
     MenuMapper menuMapper;
 
     @Override
-    public List<Menu> findNavTree(String username, int menuType) {
+    public List<Menu> findTree(String username, int menuType) {
         List<Menu> sysMenus = new ArrayList<>();
         List<Menu> menus = findByUser(username);
         for (Menu menu : menus) {

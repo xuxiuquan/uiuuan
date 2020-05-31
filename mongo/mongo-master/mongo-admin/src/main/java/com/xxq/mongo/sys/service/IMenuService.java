@@ -15,7 +15,8 @@ import java.util.List;
  */
 public interface IMenuService extends IService<Menu> {
 
-    List<Menu> findNavTree(String username, int i);
+    List<Menu> findTree(String username, int i);
 
     List<Menu> findByUser(String userName);
+
 }

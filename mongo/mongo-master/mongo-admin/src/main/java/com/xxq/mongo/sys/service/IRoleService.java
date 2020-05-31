@@ -1,7 +1,12 @@
 package com.xxq.mongo.sys.service;
 
+import com.xxq.mongo.core.page.PageRequest;
+import com.xxq.mongo.core.page.PageResult;
+import com.xxq.mongo.sys.entity.Menu;
 import com.xxq.mongo.sys.entity.Role;
 import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 /**
  * <p>
@@ -13,4 +18,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface IRoleService extends IService<Role> {
 
+    PageResult findPage(PageRequest pageRequest);
+
+    List<Menu> findRoleMenus(Long roleId);
 }

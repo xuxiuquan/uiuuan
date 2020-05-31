@@ -4,6 +4,7 @@ import com.xxq.mongo.sys.entity.RoleMenu;
 import com.xxq.mongo.sys.mapper.RoleMenuMapper;
 import com.xxq.mongo.sys.service.IRoleMenuService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -16,5 +17,11 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class RoleMenuServiceImpl extends ServiceImpl<RoleMenuMapper, RoleMenu> implements IRoleMenuService {
+    @Autowired
+    RoleMenuMapper roleMenuMapper;
 
+    @Override
+    public void removeByRoleId(Long roleId) {
+        roleMenuMapper.removeByRoleId(roleId);
+    }
 }

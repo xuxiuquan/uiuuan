@@ -29,7 +29,13 @@ public class MenuController {
     @PreAuthorize("hasAuthority('sys:menu:view')")
     @GetMapping("/findNavTree")
     public HttpResult findNavTree(@RequestParam(value = "username") String username){
-        return HttpResult.ok().data(iMenuService.findNavTree(username,1));
+        return HttpResult.ok().data(iMenuService.findTree(username,1));
+    }
+
+    @PreAuthorize("hasAuthority('sys:menu:view')")
+    @GetMapping(value="/findMenuTree")
+    public HttpResult findMenuTree() {
+        return HttpResult.ok().data(iMenuService.findTree(null, 0));
     }
 
 }

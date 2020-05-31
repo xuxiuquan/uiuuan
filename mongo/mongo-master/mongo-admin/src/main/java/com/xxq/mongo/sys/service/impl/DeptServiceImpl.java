@@ -76,7 +76,7 @@ public class DeptServiceImpl extends ServiceImpl<DeptMapper, Dept> implements ID
             List<Dept> children = new ArrayList<>();
             for (Dept dept : depts) {
                 if (sysDept.getId() != null && sysDept.getId().equals(dept.getParentId())) {
-                    dept.setParentName(dept.getName());
+                    dept.setParentName(sysDept.getName());
                     dept.setLevel(sysDept.getLevel() + 1);
                     children.add(dept);
                 }
