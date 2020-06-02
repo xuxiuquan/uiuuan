@@ -23,9 +23,9 @@
 
     <select id="findByUserName" resultMap="BaseResultMap">
         select
-       t4.*
+        t4.*
         from sys_user t1,sys_user_role t2,sys_role_menu t3,sys_menu t4
-        where t1.id = t2.user_id and t2.role_id = t3.role_id and t3.menu_id = t4.id and t1.name = 'admin' order by t4.id
+        where t1.id = t2.user_id and t2.role_id = t3.role_id and t3.menu_id = t4.id and t1.name = #{username} order by t4.id
     </select>
 
     <select id="findAll"  resultMap="BaseResultMap">
@@ -40,5 +40,9 @@
          sys_role_menu t2
          where t1.id = t2.menu_id
          and t2.role_id = #{roleId}
+    </select>
+
+    <select id="findByMenuName" resultType="com.xxq.mongo.sys.entity.Menu">
+        select * from sys_menu where name like concat("%",#{menuName},"%")
     </select>
 </mapper>

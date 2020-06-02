@@ -1,7 +1,8 @@
 package com.xxq.mongo.sys.service;
 
-import com.xxq.mongo.sys.entity.Menu;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.xxq.mongo.sys.entity.Menu;
+import com.xxq.mongo.sys.vo.MenuVo;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public interface IMenuService extends IService<Menu> {
 
-    List<Menu> findTree(String username, int i);
+    List<MenuVo> findTree(String username, int i,String... name);
 
     List<Menu> findByUser(String userName);
 

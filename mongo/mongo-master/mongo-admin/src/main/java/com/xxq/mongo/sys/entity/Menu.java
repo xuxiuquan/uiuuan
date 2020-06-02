@@ -90,11 +90,11 @@ public class Menu implements Serializable {
     private Integer delFlag;
 
     // 非数据库字段
-    private String parentName;
+    //private String parentName;
     // 非数据库字段
-    private Integer level;
+    //private Integer level;
     // 非数据库字段
-    private List<Menu> children;
+    //private List<Menu> children;
 
 
 }
