@@ -20,7 +20,9 @@
         "edit": "Edit",
         "delete": "Delete",
         "operation": "Operation",
-        "batchDelete": "BatchDelete"
+        "batchDelete": "BatchDelete",
+        "comfirm": "Confirm",
+        "reset": "Reset"
     }
 
 }

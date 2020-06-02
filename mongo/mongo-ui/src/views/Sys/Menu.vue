@@ -4,10 +4,10 @@
 	<div class="toolbar" style="float:left;padding-top:10px;padding-left:15px;">
 		<el-form :inline="true" :model="filters" :size="size">
 			<el-form-item>
-				<el-input v-model="filters.name" placeholder="名称"></el-input>
+				<el-input v-model="filters.name" placeholder="菜单名称"></el-input>
 			</el-form-item>
 			<el-form-item>
-				<kt-button icon="fa fa-search" :label="$t('action.search')" perms="sys:menu:view" type="primary" @click="findTreeData(null)"/>
+				<kt-button icon="fa fa-search" :label="$t('action.search')" perms="sys:menu:view" type="primary" @click="findTreeData(filters.name)"/>
 			</el-form-item>
 			<el-form-item>
 				<kt-button icon="fa fa-plus" :label="$t('action.add')" perms="sys:menu:add" type="primary" @click="handleAdd"/>
@@ -18,7 +18,7 @@
     <el-table :data="tableTreeDdata" stripe size="mini" style="width: 100%;"
       v-loading="loading" rowKey="id" element-loading-text="$t('action.loading')">
       <el-table-column
-        prop="id" header-align="center" align="center" width="80" label="ID">
+        prop="id" header-align="center" align="center" width="150" label="ID">
       </el-table-column>
       <table-tree-column 
         prop="name" header-align="center" treeKey="id" width="150" label="名称">
@@ -178,9 +178,12 @@ export default {
   },
   methods: {
     // 获取数据
-    findTreeData: function() {
+    findTreeData: function(data) {
       this.loading = true;
-      this.$api.menu.findMenuTree().then(res => {
+      if(data!=null){
+      this.filters.name = data
+      }
+      this.$api.menu.findMenuTree(this.filters).then(res => {
         this.tableTreeDdata = res.data;
         this.popupTreeData = this.getParentMenuTree(res.data);
         this.loading = false;
@@ -224,7 +227,7 @@ export default {
       }).then(() => {
         let params = this.getDeleteIds([], row);
         this.$api.menu.batchDelete(params).then(res => {
-          this.findTreeData();
+          this.findTreeData(null);
           this.$message({ message: "删除成功", type: "success" });
         });
       });
@@ -267,7 +270,7 @@ export default {
                   type: "error"
                 });
               }
-              this.findTreeData();
+              this.findTreeData(null);
             });
           });
         }
@@ -275,7 +278,7 @@ export default {
     }
   },
   mounted() {
-    this.findTreeData();
+    this.findTreeData(null);
   }
 };
 </script>

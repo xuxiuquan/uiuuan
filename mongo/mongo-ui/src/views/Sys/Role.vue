@@ -123,7 +123,7 @@ export default {
 			if(data !== null) {
 				this.pageRequest = data.pageRequest
 			}
-			this.pageRequest.params = [{name:'name', value:this.filters.name}]
+			this.pageRequest.params = {name: this.filters.name}
 			this.$api.role.findPage(this.pageRequest).then((res) => {
 				this.pageResult = res.data
 				this.findTreeData()

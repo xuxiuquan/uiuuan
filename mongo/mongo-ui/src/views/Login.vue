@@ -1,4 +1,8 @@
 <template>
+<div>
+  <div id="Layer1" style="position:absolute; width:100%; height:100%; background-color: snow; z-index:-1;top: 0px;left: 0px;" >
+    <img src="@/assets/backgroud.png" height="100%" width="100%"/>
+  </div>
   <el-form :model="loginForm" :rules="fieldRules" ref="loginForm" label-position="left" label-width="0px" class="demo-ruleForm login-container">
     <span class="tool-bar">
     </span>
@@ -12,7 +16,7 @@
     <el-form-item >
       <el-col :span="12">
         <el-form-item prop="captcha">
-          <el-input type="test" v-model="loginForm.captcha" auto-complete="off" placeholder="验证码, 单击图片刷新"
+          <el-input type="test" v-model="loginForm.captcha" auto-complete="off" placeholder="验证码, 单击图片刷新" @keyup.enter.native="login()"
             style="width: 100%;">
           </el-input>
         </el-form-item>
@@ -29,6 +33,7 @@
       <el-button type="primary" style="width:48%;" @click.native.prevent="login" :loading="loading">登 录</el-button>
     </el-form-item>
   </el-form>
+</div>
 </template>
 
 <script>

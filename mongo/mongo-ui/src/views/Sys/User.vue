@@ -19,7 +19,7 @@
 			<el-form-item>
 				<el-button-group>
 				<el-tooltip content="刷新" placement="top">
-					<el-button icon="fa fa-refresh" @click="findPage(null)"></el-button>
+					<el-button icon="fa fa-refresh" @click="refresh()"></el-button>
 				</el-tooltip>
 				<el-tooltip content="列显示" placement="top">
 					<el-button icon="fa fa-filter" @click="displayFilterColumnsDialog"></el-button>
@@ -140,7 +140,7 @@ export default {
 	methods: {
 		// 获取分页数据
 		findPage: function (data) {
-			if(data !== null) {
+			if(data != null) {
 				this.pageRequest = data.pageRequest
 			}else{
 				this.pageRequest.pageSize = 10
@@ -151,6 +151,11 @@ export default {
 				this.pageResult = res.data
 				this.findUserRoles()
 			}).then(data!=null?data.callback:'')
+		},
+		//刷新
+		refresh: function (){
+			this.filters.name = "";
+			this.findPage(null);
 		},
 		// 加载用户角色信息
 		findUserRoles: function () {
